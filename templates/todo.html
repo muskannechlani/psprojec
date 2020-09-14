@@ -1,0 +1,32 @@
+<p id="demo">muskan</p>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+function doSomething() {
+    console.log("oops");
+    // alert('This pops up every 5 seconds and is annoying!');
+    axios({
+    method: 'get',
+    // baseURL: window.location.origin,
+    url: 'http://127.0.0.1:8000/abc',
+// adding auth header also gives same 403 error for post request
+// headers: {
+//     Authorization: 'Token e77b8ca898b51cde72dcf2aa2c385942d771e972'
+// },
+    // data: {
+    //     name: 'xyz'
+    // },
+    // responseType: 'json',
+})
+    .then(function (response) {
+       
+        document.getElementById("demo").innerHTML = response.data;
+        console.log(response);
+    })
+
+    .catch(function (error) {
+        console.log(' error=', error.message);
+    });
+}
+// doSomething();
+setInterval(doSomething, 5000);
+</script>
